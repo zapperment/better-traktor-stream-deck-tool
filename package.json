@@ -1,4 +1,11 @@
 {
   "name": "better-traktor-stream-deck-tool",
-  "packageManager": "yarn@4.6.0"
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.mjs"
+  },
+  "packageManager": "yarn@4.6.0",
+  "devDependencies": {
+    "prettier": "^3.4.2"
+  }
 }
