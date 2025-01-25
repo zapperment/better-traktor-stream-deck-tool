@@ -23,8 +23,29 @@ const ct = {
 export const config = {
   midiPort: process.env.MIDI_PORT,
   buttons: {
-    play: {
+    playA: {
       uuid: "389804C7-2135-485C-911D-442FCE733BC1",
+      states: {
+        on: {
+          payload: {
+            BTTTriggerConfig: {
+              BTTStreamDeckIconColor1: ct.on.foreground,
+              BTTStreamDeckBackgroundColor: ct.on.background,
+            },
+          },
+        },
+        off: {
+          payload: {
+            BTTTriggerConfig: {
+              BTTStreamDeckIconColor1: ct.off.foreground,
+              BTTStreamDeckBackgroundColor: ct.off.background,
+            },
+          },
+        },
+      },
+    },
+    playB: {
+      uuid: "52894AAF-B332-41A5-85C2-199E950A05D7",
       states: {
         on: {
           payload: {
@@ -47,11 +68,19 @@ export const config = {
   },
   midi: {
     "178,0,127": {
-      button: "play",
+      button: "playA",
       state: "on",
     },
     "178,0,0": {
-      button: "play",
+      button: "playA",
+      state: "off",
+    },
+    "179,0,127": {
+      button: "playB",
+      state: "on",
+    },
+    "179,0,0": {
+      button: "playB",
       state: "off",
     },
   },
