@@ -11,6 +11,8 @@
     "prettier": "^3.4.2"
   },
   "dependencies": {
-    "commander": "^13.1.0"
+    "@julusian/midi": "^3.6.1",
+    "commander": "^13.1.0",
+    "dotenv": "^16.4.7"
   }
 }
