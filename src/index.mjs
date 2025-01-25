@@ -1,5 +1,6 @@
 import { program } from "commander";
 import { send } from "./actions/send.mjs";
+import { receive } from "./actions/receive.mjs";
 
 program
   .name("better-traktor-stream-deck-tool")
@@ -17,5 +18,14 @@ program
   .option("-b, --button <button_name>", "the button to change")
   .option("-s, --state <state_name>", "the state to change the button to")
   .action(send);
+
+program
+  .command("receive")
+  .description(
+    "starts an event listener for MIDI messages, " +
+      "sends messages to BetterTouchTool to change Stream Deck buttons " +
+      "when MIDI messages arrive from Traktor",
+  )
+  .action(receive);
 
 program.parse();

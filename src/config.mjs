@@ -21,6 +21,7 @@ const ct = {
 };
 
 export const config = {
+  midiPort: process.env.MIDI_PORT,
   buttons: {
     play: {
       uuid: "389804C7-2135-485C-911D-442FCE733BC1",
@@ -42,6 +43,16 @@ export const config = {
           },
         },
       },
+    },
+  },
+  midi: {
+    "178,0,127": {
+      button: "play",
+      state: "on",
+    },
+    "178,0,0": {
+      button: "play",
+      state: "off",
     },
   },
 };
