@@ -1,5 +1,7 @@
 {
   "name": "better-traktor-stream-deck-tool",
+  "description": "Command line tool that receives MIDI messages from Traktor and sends HTTP requests to BetterTouchTool, for controlling buttons on Stream Deck hardware",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "start": "node src/index.mjs"
@@ -7,5 +9,8 @@
   "packageManager": "yarn@4.6.0",
   "devDependencies": {
     "prettier": "^3.4.2"
+  },
+  "dependencies": {
+    "commander": "^13.1.0"
   }
 }
