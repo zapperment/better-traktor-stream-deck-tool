@@ -13,7 +13,8 @@ program
 program
   .command("send")
   .description(
-    "sends a message to BetterTouchTool to change a Stream Deck button",
+    "sends a message to BetterTouchTool to change a Stream Deck button " +
+      "(for testing purposes)",
   )
   .option("-b, --button <button_name>", "the button to change")
   .option("-s, --state <state_name>", "the state to change the button to")
