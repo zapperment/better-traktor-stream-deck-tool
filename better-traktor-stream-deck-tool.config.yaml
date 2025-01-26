@@ -26,3 +26,17 @@ buttons:
     uuid: "52894AAF-B332-41A5-85C2-199E950A05D7"
     states:
       <<: *st.iconButton
+
+midi:
+  "178,0,127":
+    button: "playA"
+    state: "on"
+  "178,0,0":
+    button: "playA"
+    state: "off"
+  "179,0,127":
+    button: "playB"
+    state: "on"
+  "179,0,0":
+    button: "playB"
+    state: "off"

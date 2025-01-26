@@ -1,7 +1,7 @@
 import { configFileName } from "../constants.mjs";
 import { findFile } from "./findFile.mjs";
 import { createDebug } from "../utils/createDebug.mjs";
-import { parse } from "yaml";
+import { load } from "js-yaml";
 import { readFileSync } from "node:fs";
 import { homedir } from "node:os";
 
@@ -29,7 +29,7 @@ export function readConfig() {
   }
   let config;
   try {
-    config = parse(rawConfig);
+    config = load(rawConfig);
   } catch (error) {
     debug.error(`Error parsing config file ${configFilePath}`, error);
     return null;
