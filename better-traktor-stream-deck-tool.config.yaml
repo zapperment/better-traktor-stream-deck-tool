@@ -16,6 +16,15 @@ states:
         BTTTriggerConfig:
           BTTStreamDeckIconColor1: *col.snow
           BTTStreamDeckBackgroundColor: *col.licorice
+  textButton: &st.textButton
+    on:
+      payload:
+        BTTTriggerConfig:
+          BTTStreamDeckBackgroundColor: *col.banana
+    off:
+      payload:
+        BTTTriggerConfig:
+          BTTStreamDeckBackgroundColor: *col.licorice
 
 buttons:
   playA:
@@ -26,17 +35,25 @@ buttons:
     uuid: "52894AAF-B332-41A5-85C2-199E950A05D7"
     states:
       <<: *st.iconButton
+  cueA:
+    uuid: "808CF54F-547E-4230-A836-3A80BE6B2043"
+    states:
+      <<: *st.textButton
+  cueB:
+    uuid: "51E2A7A7-6C40-4FD6-A72B-80A75BFABD5E"
+    states:
+      <<: *st.textButton
 
 midi:
-  "178,0,127":
+  "2,0,127":
     button: "playA"
     state: "on"
-  "178,0,0":
+  "2,0,0":
     button: "playA"
     state: "off"
-  "179,0,127":
+  "3,0,127":
     button: "playB"
     state: "on"
-  "179,0,0":
+  "3,0,0":
     button: "playB"
     state: "off"
