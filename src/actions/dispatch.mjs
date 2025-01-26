@@ -15,10 +15,11 @@ import { throttleDispatchMs } from "../constants.mjs";
 const debug = createDebug("actions:dispatch");
 
 const queues = {};
-let queue = Promise.resolve();
+const states = {};
 
 export function dispatch(bttAction) {
   const { button, state } = bttAction;
+  states[button] = state;
   if (queues[button] === undefined) {
     queues[button] = Promise.resolve();
     debug.log(`queue cache add button ${button}`);
@@ -28,8 +29,8 @@ export function dispatch(bttAction) {
   queues[button] = queues[button].then(
     () =>
       new Promise((resolve) => {
-        debug.log(`dispatched ${bttAction.button} button ${bttAction.state}`);
-        send(bttAction);
+        debug.log(`dispatched ${button} button ${states[button]}`);
+        send({ button, state: states[button] });
         setTimeout(resolve, throttleDispatchMs);
       }),
   );
