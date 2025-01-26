@@ -1,6 +1,6 @@
 import { initPort } from "../midi/initPort.mjs";
 import { config } from "../config.mjs";
-import { send } from "./send.mjs";
+import { dispatch } from "./dispatch.mjs";
 import { createDebug } from "../utils/createDebug.mjs";
 
 const debug = createDebug("actions:receive");
@@ -18,6 +18,6 @@ export function receive() {
       debug.warn("no BTT action configured");
       return;
     }
-    send(bttAction);
+    dispatch(bttAction);
   });
 }
