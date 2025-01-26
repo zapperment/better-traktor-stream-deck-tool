@@ -1,6 +1,9 @@
 import { initPort } from "../midi/initPort.mjs";
 import { config } from "../config.mjs";
 import { send } from "./send.mjs";
+import { createDebug } from "../utils/createDebug.mjs";
+
+const debug = createDebug("actions:receive");
 
 export function receive() {
   const input = initPort(config.midiPort, "input");
@@ -9,10 +12,10 @@ export function receive() {
       return;
     }
     const midiMessageKey = midiMessage.toString();
-    console.log(`received MIDI message: ${midiMessageKey}`);
+    debug.log(`received MIDI message: ${midiMessageKey}`);
     const bttAction = config.midi[midiMessageKey];
     if (!bttAction) {
-      console.warn("no BTT action configured");
+      debug.warn("no BTT action configured");
       return;
     }
     send(bttAction);

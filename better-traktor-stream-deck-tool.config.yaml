@@ -1,0 +1,28 @@
+---
+colours:
+  licorice: &col.licorice "0.000000, 0.000000, 0.000000, 255.000000"
+  banana: &col.banana "254.881188, 252.030672, 120.527085, 255.000000"
+  snow: &col.snow "255.000000, 255.000000, 255.000000, 255.000000"
+
+states:
+  iconButton: &st.iconButton
+    on:
+      payload:
+        BTTTriggerConfig:
+          BTTStreamDeckIconColor1: *col.licorice
+          BTTStreamDeckBackgroundColor: *col.banana
+    off:
+      payload:
+        BTTTriggerConfig:
+          BTTStreamDeckIconColor1: *col.snow
+          BTTStreamDeckBackgroundColor: *col.licorice
+
+buttons:
+  playA:
+    uuid: "389804C7-2135-485C-911D-442FCE733BC1"
+    states:
+      <<: *st.iconButton
+  playB:
+    uuid: "52894AAF-B332-41A5-85C2-199E950A05D7"
+    states:
+      <<: *st.iconButton

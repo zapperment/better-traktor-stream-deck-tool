@@ -3,20 +3,20 @@ import { createButtonUrl } from "./utils/createButtonUrl.mjs";
 
 const secret = process.env.BTT_SHARED_SECRET;
 
-const colour = {
+const colours = {
   licorice: "0.000000, 0.000000, 0.000000, 255.000000",
   banana: "254.881188, 252.030672, 120.527085, 255.000000",
   snow: "255.000000, 255.000000, 255.000000, 255.000000",
 };
 
-const ct = {
+const semanticColours = {
   on: {
-    foreground: colour.licorice,
-    background: colour.banana,
+    foreground: colours.licorice,
+    background: colours.banana,
   },
   off: {
-    foreground: colour.snow,
-    background: colour.licorice,
+    foreground: colours.snow,
+    background: colours.licorice,
   },
 };
 
@@ -29,16 +29,16 @@ export const config = {
         on: {
           payload: {
             BTTTriggerConfig: {
-              BTTStreamDeckIconColor1: ct.on.foreground,
-              BTTStreamDeckBackgroundColor: ct.on.background,
+              BTTStreamDeckIconColor1: semanticColours.on.foreground,
+              BTTStreamDeckBackgroundColor: semanticColours.on.background,
             },
           },
         },
         off: {
           payload: {
             BTTTriggerConfig: {
-              BTTStreamDeckIconColor1: ct.off.foreground,
-              BTTStreamDeckBackgroundColor: ct.off.background,
+              BTTStreamDeckIconColor1: semanticColours.off.foreground,
+              BTTStreamDeckBackgroundColor: semanticColours.off.background,
             },
           },
         },
@@ -50,16 +50,16 @@ export const config = {
         on: {
           payload: {
             BTTTriggerConfig: {
-              BTTStreamDeckIconColor1: ct.on.foreground,
-              BTTStreamDeckBackgroundColor: ct.on.background,
+              BTTStreamDeckIconColor1: semanticColours.on.foreground,
+              BTTStreamDeckBackgroundColor: semanticColours.on.background,
             },
           },
         },
         off: {
           payload: {
             BTTTriggerConfig: {
-              BTTStreamDeckIconColor1: ct.off.foreground,
-              BTTStreamDeckBackgroundColor: ct.off.background,
+              BTTStreamDeckIconColor1: semanticColours.off.foreground,
+              BTTStreamDeckBackgroundColor: semanticColours.off.background,
             },
           },
         },
