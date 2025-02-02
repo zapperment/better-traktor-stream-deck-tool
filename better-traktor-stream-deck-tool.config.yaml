@@ -101,6 +101,16 @@ buttons:
     title: 32
     states:
       <<: *st.yellowTextButton
+  cupA:
+    uuid: EF882345-2A76-4A35-AC4D-65A3026F9FC5
+    title: CUP
+    states:
+      <<: *st.blueTextButton
+  cupB:
+    uuid: 265EAC9E-630C-4AFE-92D3-280A6EE09289
+    title: CUP
+    states:
+      <<: *st.blueTextButton
 
 midi:
   "2,0,127":
@@ -126,6 +136,18 @@ midi:
     state: on
   "3,1,0":
     button: cueB
+    state: off
+  "2,2,127":
+    button: cupA
+    state: on
+  "2,2,0":
+    button: cupA
+    state: off
+  "3,2,127":
+    button: cupB
+    state: on
+  "3,2,0":
+    button: cupB
     state: off
 
   # deck A: loop 1/32 beat
