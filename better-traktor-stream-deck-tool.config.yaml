@@ -121,42 +121,53 @@ buttons:
       <<: *st.iconButton
 
 midi:
+  # deck A: play on
   "2,0,127":
     button: playA
     state: on
+
+  # deck A: play off
   "2,0,0":
     button: playA
     state: off
+
+  # deck B: play on
   "3,0,127":
     button: playB
     state: on
+
+  # deck B: play off
   "3,0,0":
     button: playB
     state: off
-  "2,1,127":
-    button: cueA
-    state: on
-  "2,1,0":
-    button: cueA
-    state: off
-  "3,1,127":
-    button: cueB
-    state: on
-  "3,1,0":
-    button: cueB
-    state: off
-  "2,2,127":
-    button: cupA
-    state: on
-  "2,2,0":
-    button: cupA
-    state: off
-  "3,2,127":
-    button: cupB
-    state: on
-  "3,2,0":
-    button: cupB
-    state: off
+
+  # CUE and CUP only light up when depressed,
+  # but BTT is too slow to handle this correctly,
+  # commented these out for now
+  # "2,1,127":
+  #   button: cueA
+  #   state: on
+  # "2,1,0":
+  #   button: cueA
+  #   state: off
+  # "3,1,127":
+  #   button: cueB
+  #   state: on
+  # "3,1,0":
+  #   button: cueB
+  #   state: off
+  # "2,2,127":
+  #   button: cupA
+  #   state: on
+  # "2,2,0":
+  #   button: cupA
+  #   state: off
+  # "3,2,127":
+  #   button: cupB
+  #   state: on
+  # "3,2,0":
+  #   button: cupB
+  #   state: off
 
   # deck A: loop 1/32 beat
   # turn loop 8, 16 and 32 off
