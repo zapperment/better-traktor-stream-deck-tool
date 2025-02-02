@@ -38,8 +38,9 @@ export function dispatch(bttAction) {
     () =>
       new Promise((resolve) => {
         debug.log(`dispatched ${button} button ${states[button]}`);
-        send({ button, state: states[button] });
-        setTimeout(resolve, throttleDispatchMs);
+        send({ button, state: states[button] }).then(() => {
+          setTimeout(resolve, throttleDispatchMs);
+        });
       }),
   );
 }

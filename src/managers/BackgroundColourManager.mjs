@@ -11,7 +11,6 @@ import { deckA, deckB } from "../constants.mjs";
 import { createDebug } from "../utils/createDebug.mjs";
 import { config } from "../config.mjs";
 import { createButtonUrl } from "../utils/createButtonUrl.mjs";
-import { execSync } from "child_process";
 import { getDeck } from "../utils/getDeck.mjs";
 
 const debug = createDebug("managers:BackgroundColourManager");
@@ -49,7 +48,7 @@ class BackgroundColourManager {
     }
   }
 
-  updateDeckActive(deck) {
+  async updateDeckActive(deck) {
     const isDeckActive = this.#isDeckActive[deck];
     debug.log("deck %s is now %s", deck, isDeckActive ? "active" : "inactive");
     const state = isDeckActive ? stateOn : stateOff;
@@ -68,8 +67,16 @@ class BackgroundColourManager {
           payload,
           secret,
         });
-        const cmd = `open "${url}"`;
-        execSync(cmd);
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            debug.error(`HTTP error! status: ${response.status}`);
+            return;
+          }
+        } catch (error) {
+          debug.error("Failed to send button state: %s", error.message);
+          return;
+        }
       }
     }
   }

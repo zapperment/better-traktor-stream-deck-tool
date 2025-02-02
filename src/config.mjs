@@ -9,6 +9,7 @@ const configFromYaml = readConfig();
 export const config = {
   secret: process.env.BTT_SHARED_SECRET,
   midiPort: process.env.MIDI_PORT,
+  baseUrl: process.env.BASE_URL,
   colours: {
     ...configFromYaml.colours,
   },
