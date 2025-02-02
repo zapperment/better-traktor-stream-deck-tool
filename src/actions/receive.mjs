@@ -8,6 +8,7 @@ import {
 import { createDebug } from "../utils/createDebug.mjs";
 import { isControlChange } from "../midi/isControlChange.mjs";
 import { getMidiChannel } from "../midi/getMidiChannel.mjs";
+import { placeholderLastLoopA, placeholderLastLoopB } from "../constants.mjs";
 
 const debug = createDebug("actions:receive");
 
@@ -32,26 +33,26 @@ export function receive() {
 
     let bttAction = config.midi[`${channel},${controller},${value}`];
 
+    if (!bttAction) {
+      debug.warn("no BTT action configured");
+      return;
+    }
+
     // Handle special case for loop active messages
-    if (bttAction?.button === "__LAST_LOOP_A__") {
+    if (bttAction?.button === placeholderLastLoopA) {
       const lastLoop = getLastActiveLoop("A");
       if (lastLoop) {
         bttAction = { button: lastLoop, state: "on" };
       } else {
         return;
       }
-    } else if (bttAction?.button === "__LAST_LOOP_B__") {
+    } else if (bttAction?.button === placeholderLastLoopB) {
       const lastLoop = getLastActiveLoop("B");
       if (lastLoop) {
         bttAction = { button: lastLoop, state: "on" };
       } else {
         return;
       }
-    }
-
-    if (!bttAction) {
-      debug.warn("no BTT action configured");
-      return;
     }
 
     if (Array.isArray(bttAction)) {
