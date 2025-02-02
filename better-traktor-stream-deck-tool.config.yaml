@@ -111,6 +111,14 @@ buttons:
     title: CUP
     states:
       <<: *st.blueTextButton
+  loopActiveA:
+    uuid: 4D6ABF01-7593-4949-9FFA-74DFD6329F40
+    states:
+      <<: *st.iconButton
+  loopActiveB:
+    uuid: 1FB304A3-153C-416D-9741-E48BC292ADC6
+    states:
+      <<: *st.iconButton
 
 midi:
   "2,0,127":
@@ -384,6 +392,8 @@ midi:
       state: off
     - button: loop32A
       state: off
+    - button: loopActiveA
+      state: off
 
   # deck B: loop off message
   "3,4,0":
@@ -393,13 +403,19 @@ midi:
       state: off
     - button: loop32B
       state: off
+    - button: loopActiveB
+      state: off
 
   # deck A: loop active message
   "2,4,127":
-    button: "__LAST_LOOP_A__"
-    state: "on"
+    - button: loopActiveA
+      state: on
+    - button: "__LAST_LOOP_A__"
+      state: "on"
 
   # deck B: loop active message
   "3,4,127":
-    button: "__LAST_LOOP_B__"
-    state: "on"
+    - button: loopActiveB
+      state: on
+    - button: "__LAST_LOOP_B__"
+      state: "on"

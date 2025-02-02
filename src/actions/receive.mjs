@@ -40,23 +40,6 @@ export function receive() {
       return;
     }
 
-    // Handle special case for loop active messages
-    if (bttAction?.button === placeholderLastLoopA) {
-      const lastLoop = getLastActiveLoop("A");
-      if (lastLoop) {
-        bttAction = { button: lastLoop, state: "on" };
-      } else {
-        return;
-      }
-    } else if (bttAction?.button === placeholderLastLoopB) {
-      const lastLoop = getLastActiveLoop("B");
-      if (lastLoop) {
-        bttAction = { button: lastLoop, state: "on" };
-      } else {
-        return;
-      }
-    }
-
     if (Array.isArray(bttAction)) {
       // Only clear last active loop if this is a loop size change (controller 3)
       // and not a loop off message (controller 4)
