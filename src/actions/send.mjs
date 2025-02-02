@@ -7,6 +7,7 @@ const debug = createDebug("actions:send");
 
 export function send({ button, state }) {
   const secret = config.secret;
+  debug.log("sending button", button, "state", state);
   const { uuid, title, states } = config.buttons[button];
   const { payload } = states[state];
   const url = createButtonUrl({

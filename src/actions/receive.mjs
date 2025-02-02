@@ -9,6 +9,8 @@ import { createDebug } from "../utils/createDebug.mjs";
 import { isControlChange } from "../midi/isControlChange.mjs";
 import { getMidiChannel } from "../midi/getMidiChannel.mjs";
 import { placeholderLastLoopA, placeholderLastLoopB } from "../constants.mjs";
+import { getDeck } from "../utils/getDeck.mjs";
+import { isLoopButton } from "../utils/isLoopButton.mjs";
 
 const debug = createDebug("actions:receive");
 
@@ -60,12 +62,11 @@ export function receive() {
       // and not a loop off message (controller 4)
       const isLoopSizeChange =
         bttAction.every(
-          (action) =>
-            action.button.startsWith("loop") && action.state === "off",
+          ({ button, state }) => isLoopButton(button) && state === "off",
         ) && controller === 3;
 
       if (isLoopSizeChange) {
-        const deck = bttAction[0].button.endsWith("A") ? "A" : "B";
+        const deck = getDeck(bttAction[0].button);
         clearLastActiveLoop(deck);
       }
 

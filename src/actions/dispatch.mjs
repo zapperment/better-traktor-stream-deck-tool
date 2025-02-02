@@ -10,6 +10,8 @@
 
 import { send } from "./send.mjs";
 import { createDebug } from "../utils/createDebug.mjs";
+import { isLoopButton } from "../utils/isLoopButton.mjs";
+import { getDeck } from "../utils/getDeck.mjs";
 import { throttleDispatchMs } from "../constants.mjs";
 
 const debug = createDebug("actions:dispatch");
@@ -42,8 +44,8 @@ export function dispatch(bttAction) {
 }
 
 export function updateLastActiveLoop(button, state) {
-  if (button.startsWith("loop") && state === "on") {
-    const deck = button.endsWith("A") ? "A" : "B";
+  if (isLoopButton(button) && state === "on") {
+    const deck = getDeck(button);
     lastActiveLoopButton[deck] = button;
   }
 }
