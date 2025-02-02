@@ -1,5 +1,8 @@
 import midi from "@julusian/midi";
 import { getPortIndex } from "./getPortIndex.mjs";
+import { createDebug } from "../utils/createDebug.mjs";
+
+const debug = createDebug("midi:initPort");
 
 export function initPort(portName, portType) {
   let midiInterface;
@@ -16,7 +19,7 @@ export function initPort(portName, portType) {
   }
 
   midiInterface.openPort(portIndex);
-  console.log(`opened MIDI ${portType} port (#${portIndex})`);
+  debug.log(`opened MIDI ${portType} port (#${portIndex})`);
 
   return midiInterface;
 }
