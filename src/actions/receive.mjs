@@ -1,22 +1,20 @@
 import { initPort } from "../midi/initPort.mjs";
 import { config } from "../config.mjs";
-import {
-  dispatch,
-  getLastActiveLoop,
-  clearLastActiveLoop,
-} from "./dispatch.mjs";
+import { dispatch, clearLastActiveLoop } from "./dispatch.mjs";
 import { createDebug } from "../utils/createDebug.mjs";
 import { isControlChange } from "../midi/isControlChange.mjs";
 import { getMidiChannel } from "../midi/getMidiChannel.mjs";
-import { placeholderLastLoopA, placeholderLastLoopB } from "../constants.mjs";
 import { getDeck } from "../utils/getDeck.mjs";
 import { isLoopButton } from "../utils/isLoopButton.mjs";
+import { backgroundColourManager } from "../managers/BackgroundColourManager.mjs";
+import { stateOff } from "../constants.mjs";
 
 const debug = createDebug("actions:receive");
 
 export function receive() {
   const input = initPort(config.midiPort, "input");
   input.on("message", (deltaTime, midiMessage) => {
+    backgroundColourManager.processMidi(midiMessage);
     if (!isControlChange(midiMessage)) {
       debug.warn(
         "received MIDI message other than control change: %o",
@@ -45,7 +43,7 @@ export function receive() {
       // and not a loop off message (controller 4)
       const isLoopSizeChange =
         bttAction.every(
-          ({ button, state }) => isLoopButton(button) && state === "off",
+          ({ button, state }) => isLoopButton(button) && state === stateOff,
         ) && controller === 3;
 
       if (isLoopSizeChange) {

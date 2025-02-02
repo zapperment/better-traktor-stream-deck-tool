@@ -4,8 +4,19 @@ colours:
   banana: &col.banana "254.881188, 252.030672, 120.527085, 255.000000"
   snow: &col.snow "255.000000, 255.000000, 255.000000, 255.000000"
   aqua: &col.aqua "0.000000, 150.399228, 255.000000, 255.000000"
+  cayenne: &col.cayenne "148.084240, 17.017191, 0.000000, 255.000000"
+  lead: &col.lead "33.109721, 33.110762, 33.110207, 255.000000"
 
 states:
+  deck:
+    on:
+      payload:
+        BTTTriggerConfig:
+          BTTStreamDeckBackgroundColor: *col.lead
+    off:
+      payload:
+        BTTTriggerConfig:
+          BTTStreamDeckBackgroundColor: *col.licorice
   iconButton: &st.iconButton
     on:
       payload:
@@ -57,25 +68,62 @@ buttons:
     uuid: 389804C7-2135-485C-911D-442FCE733BC1
     states:
       <<: *st.iconButton
+
   playB:
     uuid: 52894AAF-B332-41A5-85C2-199E950A05D7
     states:
       <<: *st.iconButton
+
+  # note: currently not in use
   cueA:
     uuid: 808CF54F-547E-4230-A836-3A80BE6B2043
     title: CUE
     states:
       <<: *st.blueTextButton
+
+  # note: currently not in use
   cueB:
     uuid: 51E2A7A7-6C40-4FD6-A72B-80A75BFABD5E
     title: CUE
     states:
       <<: *st.blueTextButton
+
+  jumpBackA:
+    uuid: 2FD8741A-9557-49EA-9EE7-AE0D922920AD
+
+  jumpBackB:
+    uuid: 181DD142-89F2-4A8F-80EE-95DEC92CEB6A
+
+  jumpForwardA:
+    uuid: C1DB7425-61D0-44FB-9DB7-CE3C0E20C398
+
+  jumpForwardB:
+    uuid: D6A4BCDE-D635-4FE5-9B2D-2968D60E6473
+
+  loadA:
+    uuid: 78EB91C6-C72D-4325-8090-854C4BBE52D3
+
+  loadB:
+    uuid: 5DE3896F-21A4-4D8F-83B4-7C9062FF527F
+
+  tempoSlowerA:
+    uuid: B4B684CD-D74E-4062-B9A6-090380AB29ED
+
+  tempoSlowerB:
+    uuid: 078A6350-C9ED-4728-8185-BA77DC56CD69
+
+  tempoFasterA:
+    uuid: 4A619FFF-C0DF-4DAB-8932-F5AFE27B498B
+
+  tempoFasterB:
+    uuid: 0400D771-29BE-4035-BD32-0EC5AD2DC97A
+
   loop8A:
     uuid: A769E1BA-03F6-4341-B1A2-92B8F3A3FCB0
     title: 8
     states:
       <<: *st.yellowTextButton
+
   loop8B:
     uuid: 5D8BD061-3714-4CB2-B73D-44798CDB8D46
     title: 8
@@ -91,30 +139,38 @@ buttons:
     title: 16
     states:
       <<: *st.yellowTextButton
+
   loop32A:
     uuid: 1EB0524E-9C7C-4E03-A76B-D7D7DBAA3B60
     title: 32
     states:
       <<: *st.yellowTextButton
+
   loop32B:
     uuid: 5FBDEB6F-E117-4DE3-87ED-3E9A3BFDA551
     title: 32
     states:
       <<: *st.yellowTextButton
+
+  # note: currently not in use
   cupA:
     uuid: EF882345-2A76-4A35-AC4D-65A3026F9FC5
     title: CUP
     states:
       <<: *st.blueTextButton
+
+  # note: currently not in use
   cupB:
     uuid: 265EAC9E-630C-4AFE-92D3-280A6EE09289
     title: CUP
     states:
       <<: *st.blueTextButton
+
   loopActiveA:
     uuid: 4D6ABF01-7593-4949-9FFA-74DFD6329F40
     states:
       <<: *st.iconButton
+
   loopActiveB:
     uuid: 1FB304A3-153C-416D-9741-E48BC292ADC6
     states:
@@ -422,11 +478,11 @@ midi:
     - button: loopActiveA
       state: on
     - button: "__LAST_LOOP_A__"
-      state: "on"
+      state: on
 
   # deck B: loop active message
   "3,4,127":
     - button: loopActiveB
       state: on
     - button: "__LAST_LOOP_B__"
-      state: "on"
+      state: on
