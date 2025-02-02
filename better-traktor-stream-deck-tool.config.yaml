@@ -393,3 +393,13 @@ midi:
       state: off
     - button: loop32B
       state: off
+
+  # deck A: loop active message
+  "2,4,127":
+    button: "__LAST_LOOP_A__"
+    state: "on"
+
+  # deck B: loop active message
+  "3,4,127":
+    button: "__LAST_LOOP_B__"
+    state: "on"

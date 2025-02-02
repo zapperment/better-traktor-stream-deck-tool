@@ -16,9 +16,14 @@ const debug = createDebug("actions:dispatch");
 
 const queues = {};
 const states = {};
+const lastActiveLoopButton = {
+  A: null,
+  B: null,
+};
 
 export function dispatch(bttAction) {
   const { button, state } = bttAction;
+  updateLastActiveLoop(button, state);
   states[button] = state;
   if (queues[button] === undefined) {
     queues[button] = Promise.resolve();
@@ -34,4 +39,19 @@ export function dispatch(bttAction) {
         setTimeout(resolve, throttleDispatchMs);
       }),
   );
+}
+
+export function updateLastActiveLoop(button, state) {
+  if (button.startsWith("loop") && state === "on") {
+    const deck = button.endsWith("A") ? "A" : "B";
+    lastActiveLoopButton[deck] = button;
+  }
+}
+
+export function clearLastActiveLoop(deck) {
+  lastActiveLoopButton[deck] = null;
+}
+
+export function getLastActiveLoop(deck) {
+  return lastActiveLoopButton[deck];
 }
