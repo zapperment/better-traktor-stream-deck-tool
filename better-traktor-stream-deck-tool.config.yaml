@@ -37,46 +37,159 @@ states:
 
 buttons:
   playA:
-    uuid: "389804C7-2135-485C-911D-442FCE733BC1"
+    uuid: 389804C7-2135-485C-911D-442FCE733BC1
     states:
       <<: *st.iconButton
   playB:
-    uuid: "52894AAF-B332-41A5-85C2-199E950A05D7"
+    uuid: 52894AAF-B332-41A5-85C2-199E950A05D7
     states:
       <<: *st.iconButton
   cueA:
-    uuid: "808CF54F-547E-4230-A836-3A80BE6B2043"
-    title: "CUE"
+    uuid: 808CF54F-547E-4230-A836-3A80BE6B2043
+    title: CUE
     states:
       <<: *st.textButton
   cueB:
-    uuid: "51E2A7A7-6C40-4FD6-A72B-80A75BFABD5E"
-    title: "CUE"
+    uuid: 51E2A7A7-6C40-4FD6-A72B-80A75BFABD5E
+    title: CUE
     states:
       <<: *st.textButton
 
 midi:
   "2,0,127":
-    button: "playA"
-    state: "on"
+    button: playA
+    state: on
   "2,0,0":
-    button: "playA"
-    state: "off"
+    button: playA
+    state: off
   "3,0,127":
-    button: "playB"
-    state: "on"
+    button: playB
+    state: on
   "3,0,0":
-    button: "playB"
-    state: "off"
+    button: playB
+    state: off
   "2,1,127":
-    button: "cueA"
-    state: "on"
+    button: cueA
+    state: on
   "2,1,0":
-    button: "cueA"
-    state: "off"
+    button: cueA
+    state: off
   "3,1,127":
-    button: "cueB"
-    state: "on"
+    button: cueB
+    state: on
   "3,1,0":
-    button: "cueB"
-    state: "off"
+    button: cueB
+    state: off
+
+  # loop 1/32 beat
+  # turn loop 8, 16 and 32 off
+  "2,3,0":
+    - button: loop8
+      state: off
+    - button: loop16
+      state: off
+    - button: loop32
+      state: off
+
+  # loop 1/16 beat
+  # turn loop 8, 16 and 32 off
+  "2,3,1":
+    - button: loop8
+      state: off
+    - button: loop16
+      state: off
+    - button: loop32
+      state: off
+
+  # loop 1/8 beat
+  # turn loop 8, 16 and 32 off
+  "2,3,2":
+    - button: loop8
+      state: off
+    - button: loop16
+      state: off
+    - button: loop32
+      state: off
+
+  # loop 1/4 beat
+  # turn loop 8, 16 and 32 off
+  "2,3,3":
+    - button: loop8
+      state: off
+    - button: loop16
+      state: off
+    - button: loop32
+      state: off
+
+  # loop 1/2 beat
+  # turn loop 8, 16 and 32 off
+  "2,3,4":
+    - button: loop8
+      state: off
+    - button: loop16
+      state: off
+    - button: loop32
+      state: off
+
+  # loop 1 beat
+  # turn loop 8, 16 and 32 off
+  "2,3,5":
+    - button: loop8
+      state: off
+    - button: loop16
+      state: off
+    - button: loop32
+      state: off
+
+  # loop 2 beats
+  # turn loop 8, 16 and 32 off
+  "2,3,6":
+    - button: loop8
+      state: off
+    - button: loop16
+      state: off
+    - button: loop32
+      state: off
+
+  # loop 4 beats
+  # turn loop 8, 16 and 32 off
+  "2,3,7":
+    - button: loop8
+      state: off
+    - button: loop16
+      state: off
+    - button: loop32
+      state: off
+
+  # loop 8 beats
+  # turn loop 8 on
+  # turn loop 16 and 32 off
+  "2,3,8":
+    - button: loop8
+      state: on
+    - button: loop16
+      state: off
+    - button: loop32
+      state: off
+
+  # loop 16 beats
+  # turn loop 16 on
+  # turn loop 8 and 32 off
+  "2,3,9":
+    - button: loop8
+      state: off
+    - button: loop16
+      state: on
+    - button: loop32
+      state: off
+
+  # loop 32 beats
+  # turn loop 32 on
+  # turn loop 8 and 16 off
+  "2,3,10":
+    - button: loop8
+      state: off
+    - button: loop16
+      state: off
+    - button: loop32
+      state: on
