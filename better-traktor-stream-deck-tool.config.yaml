@@ -17,11 +17,28 @@ states:
         BTTTriggerConfig:
           BTTStreamDeckIconColor1: *col.snow
           BTTStreamDeckBackgroundColor: *col.licorice
-  textButton: &st.textButton
+  blueTextButton: &st.blueTextButton
     on:
       payload:
         BTTTriggerConfig:
           BTTStreamDeckBackgroundColor: *col.aqua
+          BTTStreamDeckAttributedTitle:
+            "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2820\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fnil\\fcharset0
+            SFPro-Bold;}\n{\\colortbl;\\red255\\green255\\blue255;\\red0\\green0\\blue0;}\n{\\*\\expandedcolortbl;;\\cssrgb\\c0\\c0\\c0;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\pardirnatural\\qc\\partightenfactor0\n\n\\f0\\b\\fs60
+            \\cf2 __TITLE__}"
+    off:
+      payload:
+        BTTTriggerConfig:
+          BTTStreamDeckBackgroundColor: *col.licorice
+          BTTStreamDeckAttributedTitle:
+            "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2820\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fnil\\fcharset0
+            SFPro-Bold;}\n{\\colortbl;\\red255\\green255\\blue255;\\red255\\green255\\blue255;}\n{\\*\\expandedcolortbl;;\\cspthree\\c100000\\c100000\\c100000;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\pardirnatural\\qc\\partightenfactor0\n\n\\f0\\b\\fs60
+            \\cf2 __TITLE__}"
+  yellowTextButton: &st.yellowTextButton
+    on:
+      payload:
+        BTTTriggerConfig:
+          BTTStreamDeckBackgroundColor: *col.banana
           BTTStreamDeckAttributedTitle:
             "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2820\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fnil\\fcharset0
             SFPro-Bold;}\n{\\colortbl;\\red255\\green255\\blue255;\\red0\\green0\\blue0;}\n{\\*\\expandedcolortbl;;\\cssrgb\\c0\\c0\\c0;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\pardirnatural\\qc\\partightenfactor0\n\n\\f0\\b\\fs60
@@ -48,12 +65,42 @@ buttons:
     uuid: 808CF54F-547E-4230-A836-3A80BE6B2043
     title: CUE
     states:
-      <<: *st.textButton
+      <<: *st.blueTextButton
   cueB:
     uuid: 51E2A7A7-6C40-4FD6-A72B-80A75BFABD5E
     title: CUE
     states:
-      <<: *st.textButton
+      <<: *st.blueTextButton
+  loop8A:
+    uuid: A769E1BA-03F6-4341-B1A2-92B8F3A3FCB0
+    title: 8
+    states:
+      <<: *st.yellowTextButton
+  loop8B:
+    uuid: 5D8BD061-3714-4CB2-B73D-44798CDB8D46
+    title: 8
+    states:
+      <<: *st.yellowTextButton
+  loop16A:
+    uuid: 4CFB12F9-EBFE-48F9-BE67-ABA2CC31AE9C
+    title: 16
+    states:
+      <<: *st.yellowTextButton
+  loop16B:
+    uuid: 51439989-8D90-449B-8BE0-F7B88BF3AAA1
+    title: 16
+    states:
+      <<: *st.yellowTextButton
+  loop32A:
+    uuid: 1EB0524E-9C7C-4E03-A76B-D7D7DBAA3B60
+    title: 32
+    states:
+      <<: *st.yellowTextButton
+  loop32B:
+    uuid: 5FBDEB6F-E117-4DE3-87ED-3E9A3BFDA551
+    title: 32
+    states:
+      <<: *st.yellowTextButton
 
 midi:
   "2,0,127":
@@ -81,115 +128,228 @@ midi:
     button: cueB
     state: off
 
-  # loop 1/32 beat
+  # deck A: loop 1/32 beat
   # turn loop 8, 16 and 32 off
   "2,3,0":
-    - button: loop8
+    - button: loop8A
       state: off
-    - button: loop16
+    - button: loop16A
       state: off
-    - button: loop32
+    - button: loop32A
       state: off
 
-  # loop 1/16 beat
+  # deck A: loop 1/16 beat
   # turn loop 8, 16 and 32 off
   "2,3,1":
-    - button: loop8
+    - button: loop8A
       state: off
-    - button: loop16
+    - button: loop16A
       state: off
-    - button: loop32
+    - button: loop32A
       state: off
 
-  # loop 1/8 beat
+  # deck A: loop 1/8 beat
   # turn loop 8, 16 and 32 off
   "2,3,2":
-    - button: loop8
+    - button: loop8A
       state: off
-    - button: loop16
+    - button: loop16A
       state: off
-    - button: loop32
+    - button: loop32A
       state: off
 
-  # loop 1/4 beat
+  # deck A: loop 1/4 beat
   # turn loop 8, 16 and 32 off
   "2,3,3":
-    - button: loop8
+    - button: loop8A
       state: off
-    - button: loop16
+    - button: loop16A
       state: off
-    - button: loop32
+    - button: loop32A
       state: off
 
-  # loop 1/2 beat
+  # deck A: loop 1/2 beat
   # turn loop 8, 16 and 32 off
   "2,3,4":
-    - button: loop8
+    - button: loop8A
       state: off
-    - button: loop16
+    - button: loop16A
       state: off
-    - button: loop32
+    - button: loop32A
       state: off
 
-  # loop 1 beat
+  # deck A: loop 1 beat
   # turn loop 8, 16 and 32 off
   "2,3,5":
-    - button: loop8
+    - button: loop8A
       state: off
-    - button: loop16
+    - button: loop16A
       state: off
-    - button: loop32
+    - button: loop32A
       state: off
 
-  # loop 2 beats
+  # deck A: loop 2 beats
   # turn loop 8, 16 and 32 off
   "2,3,6":
-    - button: loop8
+    - button: loop8A
       state: off
-    - button: loop16
+    - button: loop16A
       state: off
-    - button: loop32
+    - button: loop32A
       state: off
 
-  # loop 4 beats
+  # deck A: loop 4 beats
   # turn loop 8, 16 and 32 off
   "2,3,7":
-    - button: loop8
+    - button: loop8A
       state: off
-    - button: loop16
+    - button: loop16A
       state: off
-    - button: loop32
+    - button: loop32A
       state: off
 
-  # loop 8 beats
+  # deck A: loop 8 beats
   # turn loop 8 on
   # turn loop 16 and 32 off
   "2,3,8":
-    - button: loop8
+    - button: loop8A
       state: on
-    - button: loop16
+    - button: loop16A
       state: off
-    - button: loop32
+    - button: loop32A
       state: off
 
-  # loop 16 beats
+  # deck A: loop 16 beats
   # turn loop 16 on
   # turn loop 8 and 32 off
   "2,3,9":
-    - button: loop8
+    - button: loop8A
       state: off
-    - button: loop16
+    - button: loop16A
       state: on
-    - button: loop32
+    - button: loop32A
       state: off
 
-  # loop 32 beats
+  # deck A: loop 32 beats
   # turn loop 32 on
   # turn loop 8 and 16 off
   "2,3,10":
-    - button: loop8
+    - button: loop8A
       state: off
-    - button: loop16
+    - button: loop16A
       state: off
-    - button: loop32
+    - button: loop32A
+      state: on
+
+  # deck B: loop 1/32 beat
+  # turn loop 8, 16 and 32 off
+  "3,3,0":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: off
+    - button: loop32B
+      state: off
+
+  # deck B: loop 1/16 beat
+  # turn loop 8, 16 and 32 off
+  "3,3,1":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: off
+    - button: loop32B
+      state: off
+
+  # deck B: loop 1/8 beat
+  # turn loop 8, 16 and 32 off
+  "3,3,2":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: off
+    - button: loop32B
+      state: off
+
+  # deck B: loop 1/4 beat
+  # turn loop 8, 16 and 32 off
+  "3,3,3":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: off
+    - button: loop32B
+      state: off
+
+  # deck B: loop 1/2 beat
+  # turn loop 8, 16 and 32 off
+  "3,3,4":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: off
+    - button: loop32B
+      state: off
+
+  # deck B: loop 1 beat
+  # turn loop 8, 16 and 32 off
+  "3,3,5":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: off
+    - button: loop32B
+      state: off
+
+  # deck B: loop 2 beats
+  # turn loop 8, 16 and 32 off
+  "3,3,6":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: off
+    - button: loop32B
+      state: off
+
+  # deck B: loop 4 beats
+  # turn loop 8, 16 and 32 off
+  "3,3,7":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: off
+    - button: loop32B
+      state: off
+
+  # deck B: loop 8 beats
+  # turn loop 8 on
+  # turn loop 16 and 32 off
+  "3,3,8":
+    - button: loop8B
+      state: on
+    - button: loop16B
+      state: off
+    - button: loop32B
+      state: off
+
+  # deck B: loop 16 beats
+  # turn loop 16 on
+  # turn loop 8 and 32 off
+  "3,3,9":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: on
+    - button: loop32B
+      state: off
+
+  # deck B: loop 32 beats
+  # turn loop 32 on
+  # turn loop 8 and 16 off
+  "3,3,10":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: off
+    - button: loop32B
       state: on

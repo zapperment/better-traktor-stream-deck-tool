@@ -30,6 +30,12 @@ export function receive() {
       debug.warn("no BTT action configured");
       return;
     }
-    dispatch(bttAction);
+    if (Array.isArray(bttAction)) {
+      debug.log("dispatching %d BTT actions", bttAction.length);
+      bttAction.forEach(dispatch);
+    } else {
+      debug.log("dispatching BTT action");
+      dispatch(bttAction);
+    }
   });
 }
