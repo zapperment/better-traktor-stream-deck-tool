@@ -8,9 +8,10 @@ const debug = createDebug("actions:send");
 export function send({ button, state }) {
   const secret = config.secret;
   const { uuid, states } = config.buttons[button];
-  const { payload } = states[state];
+  const { title, payload } = states[state];
   const url = createButtonUrl({
     uuid,
+    title,
     payload,
     secret,
   });
