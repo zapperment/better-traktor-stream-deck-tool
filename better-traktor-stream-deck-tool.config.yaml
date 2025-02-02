@@ -375,3 +375,21 @@ midi:
       state: off
     - button: loop32B
       state: on
+
+  # deck A: loop off message
+  "2,4,0":
+    - button: loop8A
+      state: off
+    - button: loop16A
+      state: off
+    - button: loop32A
+      state: off
+
+  # deck B: loop off message
+  "3,4,0":
+    - button: loop8B
+      state: off
+    - button: loop16B
+      state: off
+    - button: loop32B
+      state: off
