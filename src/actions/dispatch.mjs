@@ -12,13 +12,10 @@ import { send } from "./send.mjs";
 import { createDebug } from "../utils/createDebug.mjs";
 import { isLoopButton } from "../utils/isLoopButton.mjs";
 import { getDeck } from "../utils/getDeck.mjs";
-import { throttleDispatchMs } from "../constants.mjs";
 import { stateOn } from "../constants.mjs";
 
 const debug = createDebug("actions:dispatch");
 
-const queues = {};
-const states = {};
 const lastActiveLoopButton = {
   A: null,
   B: null,
@@ -27,22 +24,7 @@ const lastActiveLoopButton = {
 export function dispatch(bttAction) {
   const { button, state } = bttAction;
   updateLastActiveLoop(button, state);
-  states[button] = state;
-  if (queues[button] === undefined) {
-    queues[button] = Promise.resolve();
-    debug.log(`queue cache add button ${button}`);
-  } else {
-    debug.log(`queue cache hit button ${button}`);
-  }
-  queues[button] = queues[button].then(
-    () =>
-      new Promise((resolve) => {
-        debug.log(`dispatched ${button} button ${states[button]}`);
-        send({ button, state: states[button] }).then(() => {
-          setTimeout(resolve, throttleDispatchMs);
-        });
-      }),
-  );
+  send({ button, state });
 }
 
 export function updateLastActiveLoop(button, state) {

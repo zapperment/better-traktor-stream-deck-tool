@@ -5,6 +5,7 @@ import { placeholderLastLoopA, placeholderLastLoopB } from "../constants.mjs";
 import { getLastActiveLoop } from "./dispatch.mjs";
 import { getDeck } from "../utils/getDeck.mjs";
 import { backgroundColourManager } from "../managers/BackgroundColourManager.mjs";
+import { dispatchManager } from "../managers/DispatchManager.mjs";
 
 const debug = createDebug("actions:send");
 
@@ -40,17 +41,6 @@ export async function send({ button, state }) {
     secret,
   });
 
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      debug.error(`HTTP error! status: ${response.status}`);
-      return;
-    }
-    const body = await response.json();
-    debug.log("response body: %O", body);
-  } catch (error) {
-    debug.error("Failed to send button state: %s", error.message);
-    return;
-  }
+  dispatchManager.dispatch(finalButton, url);
   debug.log(`switched ${finalButton} button ${state}`);
 }

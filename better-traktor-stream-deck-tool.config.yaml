@@ -12,7 +12,7 @@ states:
     on:
       payload:
         BTTTriggerConfig:
-          BTTStreamDeckBackgroundColor: *col.lead
+          BTTStreamDeckBackgroundColor: *col.cayenne
     off:
       payload:
         BTTTriggerConfig:

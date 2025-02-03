@@ -12,6 +12,7 @@ import { createDebug } from "../utils/createDebug.mjs";
 import { config } from "../config.mjs";
 import { createButtonUrl } from "../utils/createButtonUrl.mjs";
 import { getDeck } from "../utils/getDeck.mjs";
+import { dispatchManager } from "./DispatchManager.mjs";
 
 const debug = createDebug("managers:BackgroundColourManager");
 
@@ -67,16 +68,7 @@ class BackgroundColourManager {
           payload,
           secret,
         });
-        try {
-          const response = await fetch(url);
-          if (!response.ok) {
-            debug.error(`HTTP error! status: ${response.status}`);
-            return;
-          }
-        } catch (error) {
-          debug.error("Failed to send button state: %s", error.message);
-          return;
-        }
+        dispatchManager.dispatch(`${button}_bg`, url);
       }
     }
   }
